@@ -11,6 +11,7 @@ Challenge work for DECA Spring Term Section 2
  4. [Creating the hardware](#creating-the-hardware)
  5. [Create new assembly code](#create-new-assembly-code)
  6. [Testing the new software and hardware out](#Testing-the-new-software-and-hardware-out)
+ 7. [Evaluation](#evaluation)
 
 ---
 ### Background:
@@ -171,3 +172,27 @@ This reduces the assembly down to 10 from 14 instructions and could save 4 cycle
 
 First I will test this hardware out with the original case of __12*5__:
 
+This works perfectly with the correct values in the register files
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/abe96335-bd30-48cd-9a5d-6c54b96c5d0b" width="600"/>
+</p>
+
+- [x] Come up with new instruction
+- [x] Impliment Hardware
+- [x] Create new assembly code
+- [x] Test the new software and hardware together
+
+---
+
+### Evaluation
+
+The new instruction I have added reduces the assembly down to 10 from 14 instructions and could save 4 cycles each time ```FLAGC``` is high (a 1 in the LSB of sum before the shift) and 3 cycles if ```FLAGC``` is low as we run the ```MOVC1``` instruction no matter what rather than jumping.
+
+It also reduces the number of registers we need to use by 1 as R4 isn't needed for the result of the AND instruction.
+
+Some limitations of this are that 3 new multiplexers are needed plus 2 new inputs are needed for the ```ALU``` and 1 new output from the ```DPDECODE``` have been added. This is quite hardware costly and so may not be worth it in some architectures.
+
+Overall this can be used for both signed and unsigned multiplication very effectively and speeds the multiplication up a lot with only the addition of 1 new instruction.
+
+If I was to improve on this, I would work to impliment a full hardware based solution to 16-bit multiplication. This would require the input of lots of adders and temporary registers in order to brute force it however and so would be much more hardware costly. It might not be a good weighting between clock cycle increase and price and quantity of hardware and so a non brute force method might need to be implimented such as Intel x86 “MUL” and “IMUL” Instructions or ARM “MUL” and “MLA” (Multiply‐Accumulate) Instructions
