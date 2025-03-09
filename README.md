@@ -8,6 +8,7 @@ Challenge work for DECA Spring Term Section 2
  1. [Background](#background)
  2. [Implimentation](#implimentation)
  3. [Coming up with new instructions](#coming-up-with-new-instructions)
+ 4. [Creating the hardware](#creating-the0hardware)
 
 ---
 ### Background:
@@ -63,4 +64,13 @@ If the right shift by one bit causes a 1 to be shifted out, then ```FLAGC``` wou
 
 The way we would do this is with a new instruction ```MOVC1 Ra Rb``` which would complete ```Ra := Ra + Rb``` only if ```FLAGC``` was high. 
 
+- [x] Come up with new instruction
+- [ ] Impliment Hardware
+- [ ] Create new assembly code
+- [ ] Test the new software and hardware together
 
+---
+
+### Creating the hardware:
+
+In easy this would be quite easy to impliment. 
