@@ -80,3 +80,7 @@ In the ALU sheet, there would be an extra multiplexer to select all the differen
 Implementing this does require additional inputs into the ALU however as we need to be able to use the register values at address Ra and Rb and also see the "address" of Rc. Currently we only see the register values of Ra and Rb so we will add another input RCADD to the ALU. 
 
 The select for the initial 7 input multiplexer can be implimented by doing the instruction ```!(ALUOPC==0)!(RCADD==0)``` basically checking that the usual outputs would be used if we are in a ```MOV``` instruction but not ```MOVCn``` or if we have any of the other instructions e.g. ```ADD, SUB```.
+
+It all looks like this in Issie (ALU block):
+
+[<img src="[Assets/icon.png](https://github.com/user-attachments/assets/1b5d02e5-7a19-401a-9531-bbbf1d9c9053)" width="200">](image.png)
