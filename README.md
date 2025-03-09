@@ -81,12 +81,12 @@ In the ALU sheet, there would be an extra multiplexer to select all the differen
 
 Implementing this does require additional inputs into the ALU however as we need to be able to use the register values at address Ra and Rb and also see the "address" of Rc. Currently we only see the register values of Ra and Rb so we will add another input RCADD to the ALU. 
 
-The select for the initial 7 input multiplexer can be implimented by checking that the usual outputs would be used if we are in a ```MOV``` instruction but not ```MOVCn``` or if we have any of the other instructions e.g. ```ADD, SUB```. Checking between ```MOV``` and ```MOVCn``` can be done by first checking if ```ALUOPC=0``` otherwise not in ```MOV``` at all, then checking that ```INS[8]=0``` otherwise definitely ```MOV``` as using an ```IMM``` as input, and finally checking that ```RCADD = 0``` otherwise those 3 bits are used to define what ```n``` is in ```MOVCn```
+The select for the initial 7 input multiplexer can be implimented by checking that the usual outputs would be used if we are in a ```MOV``` instruction but not ```MOVCn``` or if we have any of the other instructions e.g. ```ADD, SUB```. Checking between ```MOV``` and ```MOVCn``` can be done by first checking if ```ALUOPC=0``` otherwise not in ```MOV``` at all, then checking that ```INS[8]=0``` otherwise we definitely are using ```MOV``` as it is using an ```IMM``` as the value we set the register at ```Ra``` to, and finally checking that ```RCADD = 0``` otherwise those 3 bits are used to define what ```n``` is in ```MOVCn```
 
 It all looks like this in Issie (ALU block):
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/1b5d02e5-7a19-401a-9531-bbbf1d9c9053" width="600"/>
+  <img src="[https://github.com/user-attachments/assets/06c7752b-b689-4fa2-be5d-963c341d7357" width="600"/>
 </p>
 
 - [x] Come up with new instruction
@@ -143,7 +143,7 @@ MOV R2, R1
 
 While loop condition:
 CMP R0, #0
-JEQ 9
+JEQ 5
 
 Shift op1 by 1 bit:
 LSR R0, R0, 1
@@ -155,7 +155,7 @@ Shifting op2_shifted and op1:
 LSL R2, R2, 1
 
 Jumping back to beginning of while loop:
-JMP 65527 (−9)
+JMP 65531 (−5)
 ```
 
 This reduces the assembly down to 10 from 14 instructions and could save 4 cycles each time ```FLAGC``` is high (a 1 in the LSB of sum before the shift) and 3 cycles if ```FLAGC``` is low as we run the ```MOVC1``` instruction no matter what rather than jumping.
