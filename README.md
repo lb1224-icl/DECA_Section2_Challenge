@@ -81,7 +81,7 @@ In the ALU sheet, there would be an extra multiplexer to select all the differen
 
 Implementing this does require additional inputs into the ALU however as we need to be able to use the register values at address Ra and Rb and also see the "address" of Rc. Currently we only see the register values of Ra and Rb so we will add another input RCADD to the ALU. 
 
-The select for the initial 7 input multiplexer can be implimented by doing the instruction ```!(ALUOPC==0)!(RCADD==0)``` basically checking that the usual outputs would be used if we are in a ```MOV``` instruction but not ```MOVCn``` or if we have any of the other instructions e.g. ```ADD, SUB```.
+The select for the initial 7 input multiplexer can be implimented by checking that the usual outputs would be used if we are in a ```MOV``` instruction but not ```MOVCn``` or if we have any of the other instructions e.g. ```ADD, SUB```. Checking between ```MOV``` and ```MOVCn``` can be done by first checking if ```ALUOPC=0``` otherwise not in ```MOV``` at all, then checking that ```INS[8]=0``` otherwise definitely ```MOV``` as using an ```IMM``` as input, and finally checking that ```RCADD = 0``` otherwise those 3 bits are used to define what ```n``` is in ```MOVCn```
 
 It all looks like this in Issie (ALU block):
 
@@ -130,7 +130,7 @@ Jumping back to beginning of while loop:
 JMP 65527 (−9)
 ```
 
-Thew new code could instead look like this:
+The new code could instead look like this:
 
 ```
 Setting values for op1 and op2:
@@ -167,7 +167,7 @@ This reduces the assembly down to 10 from 14 instructions and could save 4 cycle
 
 ---
 
-###Testing the new software and hardware out:
+### Testing the new software and hardware out:
 
 First I will test this hardware out with the original case of __12*5__:
 
