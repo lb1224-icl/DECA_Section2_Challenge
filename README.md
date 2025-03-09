@@ -149,7 +149,7 @@ Shift op1 by 1 bit:
 LSR R0, R0, 1
 
 ADD if FLAGC is high:
-MOVC1 R3, R3, R2
+MOVC1 R3, R2
 
 Shifting op2_shifted and op1:
 LSL R2, R2, 1
