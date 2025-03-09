@@ -5,9 +5,9 @@ Challenge work for DECA Spring Term Section 2
 
 ### Table of Contents
 
- 1.[Background](#background:)
- 2. [Implimentation](#implimentation:)
- 3. [Coming up with new instructions](#coming-up-with-new-instructions:)
+ 1. [Background](#background)
+ 2. [Implimentation](#implimentation)
+ 3. [Coming up with new instructions](#coming-up-with-new-instructions)
 
 ---
 ### Background:
