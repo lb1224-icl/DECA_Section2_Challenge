@@ -8,7 +8,7 @@ Challenge work for DECA Spring Term Section 2
  1. [Background](#background)
  2. [Implimentation](#implimentation)
  3. [Coming up with new instructions](#coming-up-with-new-instructions)
- 4. [Creating the hardware](#creating-the0hardware)
+ 4. [Creating the hardware](#creating-the-hardware)
 
 ---
 ### Background:
@@ -73,4 +73,6 @@ The way we would do this is with a new instruction ```MOVC1 Ra Rb``` which would
 
 ### Creating the hardware:
 
-In easy this would be quite easy to impliment. 
+In Issie this would be quite easy to impliment. 
+
+In the ALU sheet, there would be an extre multiplexer to select all the different values of n (1-7) of of ```MOVCn```. These would be connected up to the other 8 option multiplexer which outputs the right output based on the base 8 ALU instructions ```(MOV, ADD, SUB etc...)``` via a 2 option multiplexer with a select based on whether we were doing the normal ```MOV``` or a ```MOVCn```. The select for the new 8 option multiplexer would be the value of n, which is Rc in this case. The inputs would be 0 for 0 and 2-7 as we have nothign defined there yet but input 1 would have the correct value of either ```Ra + Rb``` or just ```Ra```. This would itself be selected by a 2 option multiplexer with a select of ```FLAGC```
