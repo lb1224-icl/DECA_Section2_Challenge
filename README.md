@@ -159,7 +159,7 @@ Jumping back to beginning of while loop:
 JMP 65531 (−5)
 ```
 
-This reduces the assembly down to 10 from 14 instructions and could save 4 cycles each time ```FLAGC``` is high (a 1 in the LSB of sum before the shift) and 3 cycles if ```FLAGC``` is low as we run the ```MOVC1``` instruction no matter what rather than jumping.
+>This reduces the assembly down to 10 from 14 instructions and could save 4 cycles each time ```FLAGC``` is high (a 1 in the LSB of sum before the shift) and 3 cycles if ```FLAGC``` is low as we run the ```MOVC1``` instruction no matter what rather than jumping.
 
 - [x] Come up with new instruction
 - [x] Impliment Hardware
