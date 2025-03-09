@@ -53,6 +53,10 @@ while(op1 != 0){
   sum = sum + op2_shifted;
  }
  op2_shifted = op2_shifted << 1;
- sum = sum >> 1;
+ op1 = op1 >> 1;
 }
 ```
+
+We can start by mixing different lines into 1. The final line is ```op1 = op1 >> 1;``` and the first line in the while loop is ```if(op1 & 1)```
+
+If the right shift by one bit causes a 1 to be shifted out, then ```FLAGC``` would become 1. This would indicate that the previous value of ```op1 & 1``` was true. If we put the bit shift in first and then use the ```FLAGC``` to determine whether to impliment ```sum = sum + op2_shifted;``` we can skip a few lines of machine code and therefore cycles in the multiplication.
