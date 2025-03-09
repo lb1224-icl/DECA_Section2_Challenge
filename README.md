@@ -83,4 +83,6 @@ The select for the initial 7 input multiplexer can be implimented by doing the i
 
 It all looks like this in Issie (ALU block):
 
-[<img src="[Assets/icon.png](https://github.com/user-attachments/assets/1b5d02e5-7a19-401a-9531-bbbf1d9c9053)" width="200">](image.png)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/1b5d02e5-7a19-401a-9531-bbbf1d9c9053" width="600"/>
+</p>
